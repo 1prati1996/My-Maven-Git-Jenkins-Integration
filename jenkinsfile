@@ -12,23 +12,12 @@ tools {
          url: 'https://github.com/1prati1996/My-Maven-Git-Jenkins-Integration.git'
             }
         }
-        stage('maven clean')
+        stage('maven_steps')
         {
             steps{
-                sh 'mvn clean'
-            }
-        }
-        stage('maven compile')
-        {
-            steps{
-                sh 'mvn compile'
-            }
-        }
-        stage('maven package')
-        {
-            steps{
-                sh 'mvn package'
+                sh 'mvn clean compile test package'
             }
         }
     }
 }
+
