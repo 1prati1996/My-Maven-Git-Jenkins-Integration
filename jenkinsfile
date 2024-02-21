@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+tools {
+  maven 'mvn_home'
+}
+
+    stages {
+        stage('SCM-Checkout') {
+            steps {
+         git branch: 'main', credentialsId: 'Git credentials', 
+         url: 'https://github.com/1prati1996/My-Maven-Git-Jenkins-Integration.git'
+            }
+        }
+        stage('maven clean')
+        {
+            steps{
+                sh 'mvn clean'
+            }
+        }
+        stage('maven compile')
+        {
+            steps{
+                sh 'mvn compile'
+            }
+        }
+        stage('maven package')
+        {
+            steps{
+                sh 'mvn package'
+            }
+        }
+    }
+}
